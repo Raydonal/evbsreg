@@ -45,5 +45,10 @@ Useful links:
 \author{
 \strong{Maintainer}: Raydonal Ospina \email{raydonal@de.ufpe.br} (\href{https://orcid.org/0000-0002-9884-9090}{ORCID})
 
+Authors:
+\itemize{
+  \item Raydonal Ospina \email{raydonal@de.ufpe.br} (\href{https://orcid.org/0000-0002-9884-9090}{ORCID})
+}
+
 }
 \keyword{internal}

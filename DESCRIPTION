@@ -3,7 +3,7 @@ Type: Package
 Title: Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders
         Regression Model
 Version: 1.0.0
-Date: 2026-06-15
+Date: 2026-06-17
 Authors@R:
     person("Raydonal", "Ospina",
            email = "raydonal@de.ufpe.br",

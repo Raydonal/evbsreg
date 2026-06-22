@@ -38,6 +38,7 @@ wind gusts. \emph{Submitted}.
 Useful links:
 \itemize{
   \item \url{https://github.com/Raydonal/evbsreg}
+  \item \url{https://raydonal.github.io/evbsreg/}
   \item Report bugs at \url{https://github.com/Raydonal/evbsreg/issues}
 }
 

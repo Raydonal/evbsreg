@@ -16,7 +16,7 @@ A data frame with 124 rows and 3 variables:
 }
 \source{
 Instituto Nacional de Meteorologia (INMET), Brazil.
-  \url{https://portal.inmet.gov.br}
+  Data access: https://www.inmet.gov.br/
 }
 \usage{
 itajai

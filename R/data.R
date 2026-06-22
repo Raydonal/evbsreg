@@ -22,7 +22,7 @@
 #' parameter by the diagnostics implemented in this package.
 #'
 #' @source Instituto Nacional de Meteorologia (INMET), Brazil.
-#'   \url{https://portal.inmet.gov.br}
+#'   Data access: https://www.inmet.gov.br/
 #'
 #' @references
 #' Ospina, R., Lima, J. I. C., Barros, M., and Macedo, A. M. S. (2026).

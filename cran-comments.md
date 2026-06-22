@@ -18,6 +18,24 @@
 
 ---
 
+## Addressing CRAN Incoming Checks
+
+### Possibly misspelled words
+The following terms flagged by the spell-checker are legitimate:
+- **Ospina, Barros, Macedo**: Author surnames in Portuguese/Spanish
+- **Birnbaum**: Distribution name (Birnbaum-Saunders)
+- **EVBS**: Acronym for Extreme-Value Birnbaum-Saunders regression
+- **Itajai**: Municipality name in Brazil (application location)
+
+These are proper nouns and technical terms that should not be modified.
+
+### URL corrections
+The following URL issues have been addressed:
+- Fixed README.md: Changed `https://Raydonal.github.io/evbsreg` to `https://raydonal.github.io/evbsreg/` (lowercase, trailing slash)
+- Updated itajai.Rd: Replaced problematic portal.inmet.gov.br with generic INMET reference
+
+---
+
 ## Detailed Results
 
 ### Errors

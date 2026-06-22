@@ -46,6 +46,8 @@ Useful links:
 
 - <https://github.com/Raydonal/evbsreg>
 
+- <https://raydonal.github.io/evbsreg/>
+
 - Report bugs at <https://github.com/Raydonal/evbsreg/issues>
 
 ## Author

@@ -100,7 +100,7 @@ paper). Set `m <- 500` at the top of a script for a quick check.
 
 Full documentation, including the reference index and the “Get started”
 vignette, is available at the package website:
-<https://Raydonal.github.io/evbsreg>.
+<https://raydonal.github.io/evbsreg/>.
 
 ## License
 

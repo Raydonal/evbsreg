@@ -31,8 +31,8 @@ A data frame with 124 rows and 3 variables:
 
 ## Source
 
-Instituto Nacional de Meteorologia (INMET), Brazil.
-<https://portal.inmet.gov.br>
+Instituto Nacional de Meteorologia (INMET), Brazil. Data access:
+https://www.inmet.gov.br/
 
 ## Details
 

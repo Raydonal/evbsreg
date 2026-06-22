@@ -3,7 +3,7 @@ pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   evbsreg: evbsreg.html
-last_built: 2026-06-17T13:21Z
+last_built: 2026-06-22T12:16Z
 urls:
   reference: https://raydonal.github.io/evbsreg/reference
   article: https://raydonal.github.io/evbsreg/articles

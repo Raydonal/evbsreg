@@ -47,7 +47,7 @@ print(round(desc, 3))
 # Figure 3: scatter + ACF
 # -----------------------------------------------------------------
 cat("\nFigure 3: producing scatter + ACF...\n")
-png("fig3_scatter_acf.png", width = 1500, height = 700, res = 150)
+png(file.path(tempdir(), "fig3_scatter_acf.png"), width = 1500, height = 700, res = 150)
 par(mfrow = c(1, 2), mar = c(4.2, 4.2, 2.5, 1.2))
 plot(x3, resposta,
      ylim = c(0, 35), xlim = c(1000, 1035),
@@ -78,7 +78,7 @@ print(tab2)
 # Figure 4: residual envelope
 # -----------------------------------------------------------------
 cat("\nFigure 4: producing residual envelope...\n")
-png("fig4_envelope.png", width = 800, height = 800, res = 150)
+png(file.path(tempdir(), "fig4_envelope.png"), width = 800, height = 800, res = 150)
 envelope_qq(UMX3, resposta, nrep = 100)
 dev.off()
 
@@ -94,7 +94,7 @@ cat(sprintf("  Kolmogorov-Smirnov p-value: %.4f\n",
 # -----------------------------------------------------------------
 cat("\nFigure 5: producing CNC diagnostic panels...\n")
 diag_out <- cnc_diagnostics(fit)
-png("fig5_cnc.png", width = 1500, height = 700, res = 150)
+png(file.path(tempdir(), "fig5_cnc.png"), width = 1500, height = 700, res = 150)
 plot_cnc(diag_out, q = 7, label.flagged = 5)
 dev.off()
 
@@ -130,7 +130,7 @@ for (obs in c(82, 108)) {
 # Figure 6: Fitted regression curve
 # -----------------------------------------------------------------
 cat("\nFigure 6: producing fitted regression curve...\n")
-png("fig6_fitted_curve.png", width = 900, height = 700, res = 150)
+png(file.path(tempdir(), "fig6_fitted_curve.png"), width = 900, height = 700, res = 150)
 par(mar = c(4.5, 4.5, 2, 1))
 ord <- order(x3)
 fitted_median <- exp(fit$coeff[1] + fit$coeff[2] * x3[ord])

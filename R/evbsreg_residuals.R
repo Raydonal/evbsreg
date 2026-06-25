@@ -129,6 +129,8 @@ envelope_qq <- function(X, t, nrep = 100) {
   med   <- apply(e, 1, mean)
   faixa <- range(r, e1, e2, med)
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
   par(pty = "s")
   qqnorm(r, main = "", ylim = faixa,
          ylab = "Randomized quantile residuals",

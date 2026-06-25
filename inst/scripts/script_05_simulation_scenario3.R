@@ -30,5 +30,5 @@ for (g in gama_vals) {
   }
 }
 
-save(results, file = "results_scenario3.RData")
+save(results, file = file.path(tempdir(), "results_scenario3.RData"))
 cat("\nResults saved to results_scenario3.RData\n")

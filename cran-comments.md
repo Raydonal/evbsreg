@@ -1,97 +1,50 @@
 ## R CMD check results
 
-✔ 0 errors | ✔ 0 warnings | ✔ 0 notes
+0 errors | 0 warnings | 0 notes
 
-**Status:** Ready for CRAN submission
+This is a resubmission addressing all issues raised by the CRAN incoming
+checks and the CRAN reviewer (Konstanze Lauseker).
 
----
+## Resubmission Notes (2nd submission)
+
+### 1. Writing to user home filespace (inst/scripts/)
+
+All scripts in inst/scripts/ now write output files exclusively to
+tempdir() instead of the current working directory:
+- script_01_density_figures.R: ggsave() now uses file.path(tempdir(), ...)
+- script_02_itajai_application.R: png() now uses file.path(tempdir(), ...)
+- script_03/04/05_simulation_*.R: save() now uses file.path(tempdir(), ...)
+
+### 2. Changing graphical parameters without on.exit()
+
+In R/evbsreg_residuals.R, the envelope_qq() function now saves and
+restores par() immediately using on.exit():
+
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+  par(pty = "s")
+
+### 3. Possibly misspelled words (from previous check)
+
+The following terms flagged by the spell-checker are legitimate proper nouns
+and technical terms:
+- Ospina, Barros, Macedo: Author surnames
+- Birnbaum: Distribution name (Birnbaum-Saunders)
+- EVBS: Acronym for Extreme-Value Birnbaum-Saunders regression
+- Itajai: Municipality name in Brazil (application location)
+
+### 4. URL corrections (from previous check)
+
+- Fixed README.md: https://Raydonal.github.io/evbsreg changed to
+  https://raydonal.github.io/evbsreg/ (lowercase + trailing slash)
+- Removed unreachable URL (portal.inmet.gov.br) from man/itajai.Rd
 
 ## Test environments
 
-* **Local**: Ubuntu 22.04, R 4.5.2
-* **GitHub Actions**: 
-  - R-release (latest stable)
-  - R-devel (development version)
-* **win-builder**: 
-  - Windows (devel)
-  - Windows (release)
+* local Ubuntu 22.04, R 4.5.2
+* GitHub Actions: R-release and R-devel
+* win-builder: devel and release
 
----
-
-## Addressing CRAN Incoming Checks
-
-### Possibly misspelled words
-The following terms flagged by the spell-checker are legitimate:
-- **Ospina, Barros, Macedo**: Author surnames in Portuguese/Spanish
-- **Birnbaum**: Distribution name (Birnbaum-Saunders)
-- **EVBS**: Acronym for Extreme-Value Birnbaum-Saunders regression
-- **Itajai**: Municipality name in Brazil (application location)
-
-These are proper nouns and technical terms that should not be modified.
-
-### URL corrections
-The following URL issues have been addressed:
-- Fixed README.md: Changed `https://Raydonal.github.io/evbsreg` to `https://raydonal.github.io/evbsreg/` (lowercase, trailing slash)
-- Updated itajai.Rd: Replaced problematic portal.inmet.gov.br with generic INMET reference
-
----
-
-## Detailed Results
-
-### Errors
-None ✔
-
-### Warnings
-None ✔
-
-### Notes
-None ✔
-
----
-
-## Package Information
-
-* **Title**: Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders Regression Model
-* **Version**: 1.0.0 (Initial CRAN release)
-* **Author/Maintainer**: Raydonal Ospina <raydonal@de.ufpe.br>
-* **License**: MIT + file LICENSE
-* **Repository**: https://github.com/Raydonal/evbsreg
-
----
-
-## Downstream Dependencies
+## Downstream dependencies
 
 There are currently no downstream dependencies for this package.
-
----
-
-## Comments for CRAN Reviewers
-
-This is the first release of evbsreg to CRAN.
-
-### Key Features:
-- Implements local influence diagnostics for Extreme-Value Birnbaum-Saunders (EVBS) regression models
-- Joint maximum likelihood estimation with flexible specification
-- Conformal normal curvature diagnostics under three perturbation schemes
-- Randomized quantile residuals with simulation envelopes
-- Monte Carlo simulation utilities
-- Publication-quality diagnostic and density plots
-
-### Dependencies:
-- The package imports `SpatialExtremes` (required for its `rgev()` function) to generate Generalized Extreme Value variates used in simulation utilities and random number generation
-- All other dependencies (ggplot2, stats, graphics) are widely used and stable
-
-### Methodology:
-The methods are described in:
-- Ospina, Lima, Barros, and Macedo (2026, submitted)
-
-The package includes a comprehensive vignette demonstrating the workflow on real data (monthly maximum wind gust data from Itajai, Brazil).
-
----
-
-## Maintainer Contact
-
-Raydonal Ospina  
-UFPE (Universidade Federal de Pernambuco)  
-Email: raydonal@de.ufpe.br  
-ORCID: 0000-0002-9884-9090

@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,40 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.0.0" id="evbsreg-100">evbsreg 1.0.0<a class="anchor" aria-label="anchor" href="#evbsreg-100"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.0" id="evbsreg-120">evbsreg 1.2.0<a class="anchor" aria-label="anchor" href="#evbsreg-120"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-2-0"></a></h3>
+<ul><li>
+<code><a href="../reference/evbs_monitor.html">evbs_monitor()</a></code> computes the prospective endpoint-identifiability index <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>t</mi></msub><annotation encoding="application/x-tex">F_t</annotation></semantics></math>, combining the conformal normal curvature with the finite upper endpoint, and <code><a href="../reference/plot.evbs_monitor.html">plot.evbs_monitor()</a></code> draws the corresponding control chart. Values below one indicate that the endpoint is determined by a single observation and should not be quoted as a design value.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.1.0" id="evbsreg-110">evbsreg 1.1.0<a class="anchor" aria-label="anchor" href="#evbsreg-110"></a></h2>
+<div class="section level3">
+<h3 id="new-features-1-1-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-1-0"></a></h3>
+<ul><li>
+<code><a href="../reference/logEVBS.html">logEVBS()</a></code> provides a <code>gamlss.family</code> implementation of the log-EVBS distribution, allowing every parameter, including the tail-shape parameter, to depend on covariates or smooth terms. With a constant predictor it reproduces the fixed-parameter fit of <code><a href="../reference/evbsreg.fit.html">evbsreg.fit()</a></code>. Companion functions <code><a href="../reference/logEVBS-dist.html">dlogEVBS()</a></code>, <code><a href="../reference/logEVBS-dist.html">plogEVBS()</a></code> and <code><a href="../reference/logEVBS-dist.html">qlogEVBS()</a></code> are also provided.</li>
+<li>
+<code><a href="../reference/devbs.html">devbs()</a></code>, <code><a href="../reference/pevbs.html">pevbs()</a></code> and <code><a href="../reference/qevbs.html">qevbs()</a></code> complete the distribution family. The package previously exported only <code><a href="../reference/revbs.html">revbs()</a></code>, so users had no way to compute quantiles or return levels.</li>
+<li>
+<code><a href="../reference/evbs_endpoint.html">evbs_endpoint()</a></code> returns the finite upper endpoint of the fitted model when <code>gama &lt; 0</code> (Weibull max-domain of attraction).</li>
+<li>
+<code><a href="../reference/evbs_return_level.html">evbs_return_level()</a></code> computes return levels and expected shortfall from the exact EVBS quantile function.</li>
+<li>
+<code><a href="../reference/gevreg.fit.html">gevreg.fit()</a></code>, <code><a href="../reference/gev_scores.html">gev_scores()</a></code> and <code><a href="../reference/cnc_diagnostics_gev.html">cnc_diagnostics_gev()</a></code> extend the local influence framework to the generalized extreme-value regression model.</li>
+<li>
+<code><a href="../reference/evbs_block_boot.html">evbs_block_boot()</a></code> provides moving-block bootstrap standard errors for series with residual serial dependence.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="important-notes-1-1-0">Important notes<a class="anchor" aria-label="anchor" href="#important-notes-1-1-0"></a></h3>
+<ul><li>The extreme-value index of the EVBS <em>response</em> is <code>2 * gama</code>, not <code>gama</code>. The transformation preserves the max-domain of attraction but doubles the tail index. Documentation updated accordingly.</li>
+<li>The GEV return-level formula does <strong>not</strong> apply to the EVBS response. Use <code><a href="../reference/qevbs.html">qevbs()</a></code> or <code><a href="../reference/evbs_return_level.html">evbs_return_level()</a></code>.</li>
+<li>
+<code><a href="../reference/gevreg.fit.html">gevreg.fit()</a></code> centres are strongly recommended: the GEV likelihood is poorly conditioned for uncentred covariates and may silently fail to converge.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.0.0" id="evbsreg-100">evbsreg 1.0.0<a class="anchor" aria-label="anchor" href="#evbsreg-100"></a></h2><p class="text-muted">CRAN release: 2026-06-30</p>
 <div class="section level3">
 <h3 id="new-features-1-0-0">New Features<a class="anchor" aria-label="anchor" href="#new-features-1-0-0"></a></h3>
 <ul><li><p><strong>Initial CRAN Release</strong> - Complete implementation of local influence diagnostics for Extreme-Value Birnbaum-Saunders (EVBS) regression models</p></li>
@@ -77,7 +110,7 @@
 <ul><li>
 <strong>Imports</strong>: stats, graphics, SpatialExtremes, ggplot2</li>
 <li>
-<strong>Suggests</strong>: grDevices, knitr, rmarkdown, testthat</li>
+<strong>Suggests</strong>: gamlss, grDevices, knitr, rmarkdown, testthat</li>
 </ul><hr><p>For more information, visit: <a href="https://raydonal.github.io/evbsreg/" class="uri">https://raydonal.github.io/evbsreg/</a></p>
 </div>
 </div>
@@ -90,7 +123,7 @@
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer></div>

@@ -1,3 +1,44 @@
+# evbsreg 1.2.0
+
+## New features
+
+* `evbs_monitor()` computes the prospective endpoint-identifiability index
+  $F_t$, combining the conformal normal curvature with the finite upper endpoint,
+  and `plot.evbs_monitor()` draws the corresponding control chart. Values below
+  one indicate that the endpoint is determined by a single observation and should
+  not be quoted as a design value.
+
+# evbsreg 1.1.0
+
+## New features
+
+* `logEVBS()` provides a `gamlss.family` implementation of the log-EVBS
+  distribution, allowing every parameter, including the tail-shape parameter,
+  to depend on covariates or smooth terms. With a constant predictor it
+  reproduces the fixed-parameter fit of `evbsreg.fit()`. Companion functions
+  `dlogEVBS()`, `plogEVBS()` and `qlogEVBS()` are also provided.
+* `devbs()`, `pevbs()` and `qevbs()` complete the distribution family. The
+  package previously exported only `revbs()`, so users had no way to compute
+  quantiles or return levels.
+* `evbs_endpoint()` returns the finite upper endpoint of the fitted model when
+  `gama < 0` (Weibull max-domain of attraction).
+* `evbs_return_level()` computes return levels and expected shortfall from the
+  exact EVBS quantile function.
+* `gevreg.fit()`, `gev_scores()` and `cnc_diagnostics_gev()` extend the local
+  influence framework to the generalized extreme-value regression model.
+* `evbs_block_boot()` provides moving-block bootstrap standard errors for
+  series with residual serial dependence.
+
+## Important notes
+
+* The extreme-value index of the EVBS *response* is `2 * gama`, not `gama`. The
+  transformation preserves the max-domain of attraction but doubles the tail
+  index. Documentation updated accordingly.
+* The GEV return-level formula does **not** apply to the EVBS response. Use
+  `qevbs()` or `evbs_return_level()`.
+* `gevreg.fit()` centres are strongly recommended: the GEV likelihood is poorly
+  conditioned for uncentred covariates and may silently fail to converge.
+
 # evbsreg 1.0.0
 
 ## New Features
@@ -10,7 +51,7 @@
   - Case-weight perturbation
   - Response variable perturbation
   - Explanatory variable perturbation
-  
+
 * **Residuals** - Randomized quantile residuals (`rcoxsnell()`, `rqrandomized()`) with simulation envelopes for model validation
 
 * **Visualization** - Publication-quality diagnostic and density plots:
@@ -41,7 +82,7 @@ Application to real-world data:
 ## Dependencies
 
 * **Imports**: stats, graphics, SpatialExtremes, ggplot2
-* **Suggests**: grDevices, knitr, rmarkdown, testthat
+* **Suggests**: gamlss, grDevices, knitr, rmarkdown, testthat
 
 ---
 

@@ -2,8 +2,8 @@ Package: evbsreg
 Type: Package
 Title: Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders
         Regression Model
-Version: 1.0.0
-Date: 2026-06-17
+Version: 1.2.0
+Date: 2026-07-18
 Authors@R:
     person("Raydonal", "Ospina",
            email = "raydonal@de.ufpe.br",
@@ -15,9 +15,15 @@ Description: Implements local influence diagnostics for the Extreme-Value
     perturbation schemes (case-weight, response variable, and explanatory
     variable), randomized quantile residuals with simulation envelope,
     Monte Carlo simulation utilities, and publication-quality density and
-    diagnostic plots. The methods are described in Ospina, Lima, Barros,
-    and Macedo (2026, submitted) and are applied to monthly maximum wind
-    gust data from Itajai, Brazil.
+    diagnostic plots. Version 1.1.0 adds the density, distribution and
+    quantile functions, the finite upper endpoint, return levels and
+    expected shortfall, block bootstrap standard errors for serially
+    dependent series, local influence diagnostics for the generalized
+    extreme-value regression model, and a GAMLSS family allowing the
+    tail-shape parameter to depend on covariates. Version 1.2.0 adds a
+    prospective control chart for endpoint identifiability. The methods
+    are described in Ospina, Lima, Barros, and Macedo (2026, submitted)
+    and are applied to monthly maximum wind gust data from Itajai, Brazil.
 License: MIT + file LICENSE
 URL: https://github.com/Raydonal/evbsreg, https://raydonal.github.io/evbsreg/
 BugReports: https://github.com/Raydonal/evbsreg/issues
@@ -31,6 +37,7 @@ Imports:
     SpatialExtremes,
     ggplot2
 Suggests:
+    gamlss,
     grDevices,
     knitr,
     rmarkdown,

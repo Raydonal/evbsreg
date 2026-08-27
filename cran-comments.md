@@ -2,48 +2,50 @@
 
 0 errors | 0 warnings | 0 notes
 
-This is a resubmission addressing all issues raised by the CRAN incoming
-checks and the CRAN reviewer (Konstanze Lauseker).
+## Summary of changes since the CRAN-accepted 1.0.0
 
-## Resubmission Notes (2nd submission)
+This is an update, not a resubmission in response to reviewer comments; no
+new comments have been received since 1.0.0 was accepted. Version 1.2.0 adds:
 
-### 1. Writing to user home filespace (inst/scripts/)
+* `evbs_monitor()` / `plot.evbs_monitor()`: a prospective control chart for
+  endpoint identifiability.
+* `devbs()`, `pevbs()`, `qevbs()`: the density, distribution, and quantile
+  functions completing the EVBS family (1.0.0 exported only the random
+  generator, `revbs()`).
+* `evbs_endpoint()`, `evbs_return_level()`: the finite upper endpoint and
+  return levels/expected shortfall implied by the fitted model.
+* `evbs_block_boot()`: moving-block bootstrap standard errors for serially
+  dependent series.
+* `gevreg.fit()`, `gev_scores()`, `cnc_diagnostics_gev()`: the same local
+  influence framework extended to generalized extreme-value regression,
+  used as a benchmark against the EVBS model.
+* `logEVBS()` (+ `dlogEVBS()`, `plogEVBS()`, `qlogEVBS()`): a `gamlss.family`
+  implementation allowing the tail-shape parameter to depend on covariates.
 
-All scripts in inst/scripts/ now write output files exclusively to
-tempdir() instead of the current working directory:
-- script_01_density_figures.R: ggsave() now uses file.path(tempdir(), ...)
-- script_02_itajai_application.R: png() now uses file.path(tempdir(), ...)
-- script_03/04/05_simulation_*.R: save() now uses file.path(tempdir(), ...)
+All additions are new exports; nothing from the 1.0.0 public API was removed
+or changed. See NEWS.md for full details.
 
-### 2. Changing graphical parameters without on.exit()
+## Fixes from the previous CRAN review remain in place
 
-In R/evbsreg_residuals.R, the envelope_qq() function now saves and
-restores par() immediately using on.exit():
+The two substantive issues raised by the CRAN reviewer (Konstanze Lauseker)
+on 1.0.0 were verified to still hold in this version:
 
-  oldpar <- par(no.readonly = TRUE)
-  on.exit(par(oldpar))
-  par(pty = "s")
+* `inst/scripts/*.R` still write exclusively to `tempdir()`, not the working
+  directory.
+* `envelope_qq()` (R/evbsreg_residuals.R) still restores graphical parameters
+  with `on.exit(par(oldpar))`.
 
-### 3. Possibly misspelled words (from previous check)
-
-The following terms flagged by the spell-checker are legitimate proper nouns
-and technical terms:
-- Ospina, Barros, Macedo: Author surnames
-- Birnbaum: Distribution name (Birnbaum-Saunders)
-- EVBS: Acronym for Extreme-Value Birnbaum-Saunders regression
-- Itajai: Municipality name in Brazil (application location)
-
-### 4. URL corrections (from previous check)
-
-- Fixed README.md: https://Raydonal.github.io/evbsreg changed to
-  https://raydonal.github.io/evbsreg/ (lowercase + trailing slash)
-- Removed unreachable URL (portal.inmet.gov.br) from man/itajai.Rd
+Neither file was touched while adding the 1.2.0 functionality above.
 
 ## Test environments
 
-* local Ubuntu 22.04, R 4.5.2
-* GitHub Actions: R-release and R-devel
-* win-builder: devel and release
+* local Ubuntu, R 4.6.1: `R CMD build` + `R CMD check --no-manual`, 0 errors
+  / 0 warnings / 0 notes. Full `testthat` suite (31 tests across 5 files)
+  passes.
+
+Not yet run for this version, recommended before submitting: win-builder
+(devel and release) and the R-hub checks (`.github/workflows/rhub.yaml`,
+manual `workflow_dispatch`). The 1.0.0 submission was checked on both.
 
 ## Downstream dependencies
 

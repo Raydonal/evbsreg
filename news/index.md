@@ -2,6 +2,28 @@
 
 ## evbsreg 1.2.0
 
+### Bug fixes
+
+- [`plot_aggregate_contributions()`](https://raydonal.github.io/evbsreg/reference/plot_aggregate_contributions.md)
+  labelled flagged observations with a fixed offset above each point, so
+  labels for observations close together on the index axis overlapped
+  and became unreadable. Labels are now staggered vertically for points
+  that fall within a closeness threshold of each other, leaving isolated
+  points unaffected.
+- [`envelope_qq()`](https://raydonal.github.io/evbsreg/reference/envelope_qq.md)
+  saved and restored the caller’s *entire*
+  [`par()`](https://rdrr.io/r/graphics/par.html) state
+  (`par(no.readonly = TRUE)`), which includes the multi-panel layout
+  position (`mfg`). When called as one step of a multi-panel figure set
+  up by the caller (`par(mfrow = c(1, 2))` followed by
+  [`envelope_qq()`](https://raydonal.github.io/evbsreg/reference/envelope_qq.md)
+  then a second
+  [`plot()`](https://rdrr.io/r/graphics/plot.default.html)), restoring
+  the saved state on exit rewound the layout position, so the second
+  plot overwrote the first panel instead of advancing to the second,
+  leaving one panel blank. The function now saves and restores only
+  `pty`, the one parameter it actually changes.
+
 ### New features
 
 - [`evbs_monitor()`](https://raydonal.github.io/evbsreg/reference/evbs_monitor.md)

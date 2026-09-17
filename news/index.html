@@ -35,6 +35,13 @@
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.0" id="evbsreg-120">evbsreg 1.2.0<a class="anchor" aria-label="anchor" href="#evbsreg-120"></a></h2>
 <div class="section level3">
+<h3 id="bug-fixes-1-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-2-0"></a></h3>
+<ul><li>
+<code><a href="../reference/plot_aggregate_contributions.html">plot_aggregate_contributions()</a></code> labelled flagged observations with a fixed offset above each point, so labels for observations close together on the index axis overlapped and became unreadable. Labels are now staggered vertically for points that fall within a closeness threshold of each other, leaving isolated points unaffected.</li>
+<li>
+<code><a href="../reference/envelope_qq.html">envelope_qq()</a></code> saved and restored the caller’s <em>entire</em> <code><a href="https://rdrr.io/r/graphics/par.html" class="external-link">par()</a></code> state (<code>par(no.readonly = TRUE)</code>), which includes the multi-panel layout position (<code>mfg</code>). When called as one step of a multi-panel figure set up by the caller (<code>par(mfrow = c(1, 2))</code> followed by <code><a href="../reference/envelope_qq.html">envelope_qq()</a></code> then a second <code><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot()</a></code>), restoring the saved state on exit rewound the layout position, so the second plot overwrote the first panel instead of advancing to the second, leaving one panel blank. The function now saves and restores only <code>pty</code>, the one parameter it actually changes.</li>
+</ul></div>
+<div class="section level3">
 <h3 id="new-features-1-2-0">New features<a class="anchor" aria-label="anchor" href="#new-features-1-2-0"></a></h3>
 <ul><li>
 <code><a href="../reference/evbs_monitor.html">evbs_monitor()</a></code> computes the prospective endpoint-identifiability index <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>t</mi></msub><annotation encoding="application/x-tex">F_t</annotation></semantics></math>, combining the conformal normal curvature with the finite upper endpoint, and <code><a href="../reference/plot.evbs_monitor.html">plot.evbs_monitor()</a></code> draws the corresponding control chart. Values below one indicate that the endpoint is determined by a single observation and should not be quoted as a design value.</li>

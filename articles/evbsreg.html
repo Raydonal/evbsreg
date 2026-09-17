@@ -183,13 +183,14 @@ under a correct specification.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/envelope_qq.html">envelope_qq</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span>, nrep <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <p><img src="evbsreg_files/figure-html/envelope-1.png" class="r-plt" alt="" width="576"></p>
+<pre><code><span><span class="co">#&gt; Warning in par(oldpar): "m" is not a graphical parameter</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="density-shapes">Density shapes<a class="anchor" aria-label="anchor" href="#density-shapes"></a>
 </h2>
 <p>The package also provides the density-plotting functions used to
 produce Figures 1 and 2 of the paper.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_evbs_alpha.html">plot_evbs_alpha</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="evbsreg_files/figure-html/densities-1.png" class="r-plt" alt="" width="672"></p>
 </div>
@@ -199,7 +200,7 @@ produce Figures 1 and 2 of the paper.</p>
 <p>Five standalone scripts reproduce every figure, table, and simulation
 in the paper. After installation they are available via
 <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Density figures (Figures 1-2)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"scripts/script_01_density_figures.R"</span>, package <span class="op">=</span> <span class="st">"evbsreg"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>

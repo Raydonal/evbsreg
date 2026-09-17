@@ -139,6 +139,8 @@ envelope_qq(X, itajai$wind, nrep = 100)
 
 ![](evbsreg_files/figure-html/envelope-1.png)
 
+    #> Warning in par(oldpar): "m" is not a graphical parameter
+
 ## Density shapes
 
 The package also provides the density-plotting functions used to produce

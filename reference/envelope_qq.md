@@ -48,4 +48,5 @@ data(itajai)
 X <- cbind(1, itajai$pressure)
 envelope_qq(X, itajai$wind, nrep = 100)
 
+#> Warning: "m" is not a graphical parameter
 ```

@@ -1,3 +1,30 @@
+# evbsreg 1.2.1
+
+## Bug fixes and documentation
+
+* `devbs()` documentation stated that the extreme-value index of the response
+  is always 2*gamma. That holds only for gamma > 0; for gamma <= 0 the index
+  is gamma itself (Ferreira, Gomes and Leiva, 2012, Theorems 4.1-4.2).
+* `evbs_return_level()` documentation now states that the level is
+  conditional on the covariate value, that `period` is in units of one
+  observation (months, for monthly maxima), and what reading it as an annual
+  return level assumes.
+* `evbs_monitor()` documentation now states that the endpoint is evaluated at
+  the covariate value of the running maximum, as the code does.
+* `inst/scripts/`: the simulation scripts used gamma in {-0.2, -0.1, 0.1, 0.2}
+  whereas the paper's tables use {-0.2, 0, 0.2}; Scenario 3 used alpha = 0.5,
+  which with the contamination alpha - 0.5 gave a degenerate alpha = 0. Both
+  now match the paper (Scenario 3: beta = (1, 2), alpha = 1.2).
+
+## New features
+
+* `cnc_diagnostics_gev()` also returns `Bbar`, the mean aggregate contribution
+  computed exactly as `colMeans(cnc_diagnostics(fit)$Bj)` is for the EVBS
+  model, so that influence rankings can be compared across the two families.
+  The existing `Bj` (normalised diagonal of the influence matrix) is unchanged.
+* `gev_monitor()` computes the prospective identifiability index of
+  `evbs_monitor()` under the GEV regression.
+
 # evbsreg 1.2.0
 
 ## Bug fixes

@@ -1,3 +1,19 @@
+## Version 1.2.1
+
+1.2.1 follows 1.2.0 (submitted 2026-09-17). If 1.2.0 has not yet been
+processed, this version supersedes it. Changes since 1.2.0:
+
+* New export `gev_monitor()` (the prospective identifiability index under the
+  GEV regression) and a new element `Bbar` in the value of
+  `cnc_diagnostics_gev()`; no existing export or return value was removed or
+  changed.
+* Documentation corrections (`devbs()`, `evbs_return_level()`,
+  `evbs_monitor()`) and the simulation scripts in `inst/scripts/` aligned with
+  the accompanying paper; the scripts still write only to `tempdir()`.
+
+R CMD check --as-cran on 1.2.1: 0 errors | 0 warnings | 1 note (the same
+local-only HTML Tidy note described below). 38 test expectations pass.
+
 ## R CMD check results
 
 0 errors | 0 warnings | 1 note

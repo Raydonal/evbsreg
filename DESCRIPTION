@@ -2,8 +2,8 @@ Package: evbsreg
 Type: Package
 Title: Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders
         Regression Model
-Version: 1.2.0
-Date: 2026-09-17
+Version: 1.2.1
+Date: 2026-10-08
 Authors@R:
     person("Raydonal", "Ospina",
            email = "raydonal@de.ufpe.br",
@@ -43,4 +43,4 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
-Config/roxygen2/version: 8.0.0
+Config/roxygen2/version: 8.1.0

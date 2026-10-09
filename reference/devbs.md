@@ -38,10 +38,12 @@ A numeric vector of (log-)density values.
 
 ## Details
 
-The extreme-value index of the *response* \\T\\ is \\2\gamma\\, not
-\\\gamma\\. The transformation preserves the max-domain of attraction
-but doubles the tail index, because \\T \approx \beta\alpha^2 Z^2\\ in
-the upper tail.
+The response \\T\\ lies in the same max-domain of attraction as the GEV
+variate. Its extreme-value index is \\2\gamma\\ when \\\gamma \> 0\\,
+because \\T \approx \beta\alpha^2 Z^2\\ in the upper tail, and
+\\\gamma\\ itself when \\\gamma \le 0\\: near a finite endpoint the
+transformation is locally linear (Ferreira, Gomes and Leiva, 2012,
+Theorems 4.1 and 4.2).
 
 ## Examples
 

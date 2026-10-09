@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,28 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="1.2.0" id="evbsreg-120">evbsreg 1.2.0<a class="anchor" aria-label="anchor" href="#evbsreg-120"></a></h2>
+<h2 class="pkg-version" data-toc-text="1.2.1" id="evbsreg-121">evbsreg 1.2.1<a class="anchor" aria-label="anchor" href="#evbsreg-121"></a></h2>
+<div class="section level3">
+<h3 id="bug-fixes-and-documentation-1-2-1">Bug fixes and documentation<a class="anchor" aria-label="anchor" href="#bug-fixes-and-documentation-1-2-1"></a></h3>
+<ul><li>
+<code><a href="../reference/devbs.html">devbs()</a></code> documentation stated that the extreme-value index of the response is always 2*gamma. That holds only for gamma &gt; 0; for gamma &lt;= 0 the index is gamma itself (Ferreira, Gomes and Leiva, 2012, Theorems 4.1-4.2).</li>
+<li>
+<code><a href="../reference/evbs_return_level.html">evbs_return_level()</a></code> documentation now states that the level is conditional on the covariate value, that <code>period</code> is in units of one observation (months, for monthly maxima), and what reading it as an annual return level assumes.</li>
+<li>
+<code><a href="../reference/evbs_monitor.html">evbs_monitor()</a></code> documentation now states that the endpoint is evaluated at the covariate value of the running maximum, as the code does.</li>
+<li>
+<code>inst/scripts/</code>: the simulation scripts used gamma in {-0.2, -0.1, 0.1, 0.2} whereas the paper’s tables use {-0.2, 0, 0.2}; Scenario 3 used alpha = 0.5, which with the contamination alpha - 0.5 gave a degenerate alpha = 0. Both now match the paper (Scenario 3: beta = (1, 2), alpha = 1.2).</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-1-2-1">New features<a class="anchor" aria-label="anchor" href="#new-features-1-2-1"></a></h3>
+<ul><li>
+<code><a href="../reference/cnc_diagnostics_gev.html">cnc_diagnostics_gev()</a></code> also returns <code>Bbar</code>, the mean aggregate contribution computed exactly as <code>colMeans(cnc_diagnostics(fit)$Bj)</code> is for the EVBS model, so that influence rankings can be compared across the two families. The existing <code>Bj</code> (normalised diagonal of the influence matrix) is unchanged.</li>
+<li>
+<code><a href="../reference/gev_monitor.html">gev_monitor()</a></code> computes the prospective identifiability index of <code><a href="../reference/evbs_monitor.html">evbs_monitor()</a></code> under the GEV regression.</li>
+</ul></div>
+</div>
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.0" id="evbsreg-120">evbsreg 1.2.0<a class="anchor" aria-label="anchor" href="#evbsreg-120"></a></h2><p class="text-muted">CRAN release: 2026-09-18</p>
 <div class="section level3">
 <h3 id="bug-fixes-1-2-0">Bug fixes<a class="anchor" aria-label="anchor" href="#bug-fixes-1-2-0"></a></h3>
 <ul><li>

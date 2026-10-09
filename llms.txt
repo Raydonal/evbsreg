@@ -151,6 +151,8 @@ MIT © Raydonal Ospina
   : Generate EVBS Density Values
 - [`generate_logevbs_data()`](https://raydonal.github.io/evbsreg/reference/generate_logevbs_data.md)
   : Generate log-EVBS Density Values
+- [`gev_monitor()`](https://raydonal.github.io/evbsreg/reference/gev_monitor.md)
+  : Prospective endpoint-identifiability index under the GEV regression
 - [`gev_scores()`](https://raydonal.github.io/evbsreg/reference/gev_scores.md)
   : Individual score contributions for the GEV regression model
 - [`gevreg.fit()`](https://raydonal.github.io/evbsreg/reference/gevreg.fit.md)

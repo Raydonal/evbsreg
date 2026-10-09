@@ -11,7 +11,7 @@ predictor value."><meta property="og:image" content="https://raydonal.github.io/
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,6 +73,17 @@ monthly maxima and a \(T\)-year return level, use <code>period = 12 * T</code>.<
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>A named numeric vector with the return level and, if requested, the
   expected shortfall.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>The return level is the quantile of order \(1 - 1/\code{period}\) of the
+fitted <em>conditional</em> distribution of one observation at covariate
+value <code>x</code>: it is exceeded on average once in <code>period</code>
+observations with that covariate value, not a return level of the marginal
+distribution. With monthly maxima, <code>period = 12 * T</code> gives the level
+exceeded once in \(12T\) months; reading it as the \(T\)-year level of
+the annual maximum assumes the monthly maxima of a year are independent.
+Periods much longer than the record are extrapolations.</p>
     </div>
 
     <div class="section level2">

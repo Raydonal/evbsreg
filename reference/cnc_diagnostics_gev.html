@@ -11,7 +11,7 @@ gev_scores) and the observed information."><meta property="og:image" content="ht
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,8 +58,13 @@ regression model, obtained from the individual score contributions (see
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A list with the normalized aggregate contributions <code>Bj</code>, the
-  threshold <code>2/n</code>, and the indices of the flagged observations.</p>
+    <p>A list with <code>Bj</code>, the diagonal of the influence matrix
+  normalised to sum to one, the threshold <code>2/n</code>, the indices of the
+  observations with <code>Bj</code> above it, and <code>Bbar</code>, the mean aggregate
+  contribution over the thresholds \(q = 1, \ldots, 7\) and the
+  unthresholded contribution, computed exactly as
+  <code>colMeans(cnc_diagnostics(fit)$Bj)</code> is for the EVBS model. Use
+  <code>Bbar</code> when comparing influence rankings with the EVBS fit.</p>
     </div>
 
     <div class="section level2">

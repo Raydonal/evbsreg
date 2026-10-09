@@ -20,8 +20,12 @@ cnc_diagnostics_gev(object)
 
 ## Value
 
-A list with the normalized aggregate contributions `Bj`, the threshold
-`2/n`, and the indices of the flagged observations.
+A list with `Bj`, the diagonal of the influence matrix normalised to sum
+to one, the threshold `2/n`, the indices of the observations with `Bj`
+above it, and `Bbar`, the mean aggregate contribution over the
+thresholds \\q = 1, \ldots, 7\\ and the unthresholded contribution,
+computed exactly as `colMeans(cnc_diagnostics(fit)$Bj)` is for the EVBS
+model. Use `Bbar` when comparing influence rankings with the EVBS fit.
 
 ## Examples
 

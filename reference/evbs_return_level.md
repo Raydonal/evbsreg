@@ -35,6 +35,17 @@ evbs_return_level(object, x, period, es = FALSE)
 A named numeric vector with the return level and, if requested, the
 expected shortfall.
 
+## Details
+
+The return level is the quantile of order \\1 - 1/\code{period}\\ of the
+fitted *conditional* distribution of one observation at covariate value
+`x`: it is exceeded on average once in `period` observations with that
+covariate value, not a return level of the marginal distribution. With
+monthly maxima, `period = 12 * T` gives the level exceeded once in
+\\12T\\ months; reading it as the \\T\\-year level of the annual maximum
+assumes the monthly maxima of a year are independent. Periods much
+longer than the record are extrapolations.
+
 ## Examples
 
 ``` r

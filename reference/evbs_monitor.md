@@ -42,7 +42,13 @@ contribution when the model is fitted to the first \\t\\ records, and
 \\y\_{\max}(t)\\ the largest response up to \\t\\. Then \$\$F_t = \hat
 T^{\*}\_{(-j^{\*}(t))}(t) / y\_{\max}(t),\$\$ where \\\hat
 T^{\*}\_{(-j^{\*})}\\ is the endpoint estimated after deleting the
-flagged observation, evaluated at its covariate value.
+flagged observation, evaluated at the covariate value of the observation
+that attains \\y\_{\max}(t)\\, so that numerator and denominator refer
+to the same covariate value. The flagged observation is the one with the
+largest mean aggregate contribution,
+`colMeans(cnc_diagnostics(fit)$Bj)`. See
+[`gev_monitor`](https://raydonal.github.io/evbsreg/reference/gev_monitor.md)
+for the same index under the GEV regression.
 
 Values below one indicate that the model fitted without the flagged
 observation assigns probability zero to a value that was in fact

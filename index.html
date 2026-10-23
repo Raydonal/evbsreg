@@ -16,8 +16,8 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders Regression Model">
-<meta name="description" content="Implements local influence diagnostics for the Extreme-Value Birnbaum-Saunders (EVBS) regression model: joint maximum likelihood estimation, conformal normal curvature diagnostics under three perturbation schemes (case-weight, response variable, and explanatory variable), randomized quantile residuals with simulation envelope, Monte Carlo simulation utilities, and publication-quality density and diagnostic plots. Version 1.1.0 adds the density, distribution and quantile functions, the finite upper endpoint, return levels and expected shortfall, block bootstrap standard errors for serially dependent series, local influence diagnostics for the generalized extreme-value regression model, and a GAMLSS family allowing the tail-shape parameter to depend on covariates. Version 1.2.0 adds a prospective control chart for endpoint identifiability. The methods are described in Ospina, Lima, Barros, and Macedo (2026, submitted) and are applied to monthly maximum wind gust data from Itajai, Brazil.">
-<meta property="og:description" content="Implements local influence diagnostics for the Extreme-Value Birnbaum-Saunders (EVBS) regression model: joint maximum likelihood estimation, conformal normal curvature diagnostics under three perturbation schemes (case-weight, response variable, and explanatory variable), randomized quantile residuals with simulation envelope, Monte Carlo simulation utilities, and publication-quality density and diagnostic plots. Version 1.1.0 adds the density, distribution and quantile functions, the finite upper endpoint, return levels and expected shortfall, block bootstrap standard errors for serially dependent series, local influence diagnostics for the generalized extreme-value regression model, and a GAMLSS family allowing the tail-shape parameter to depend on covariates. Version 1.2.0 adds a prospective control chart for endpoint identifiability. The methods are described in Ospina, Lima, Barros, and Macedo (2026, submitted) and are applied to monthly maximum wind gust data from Itajai, Brazil.">
+<meta name="description" content="Local influence diagnostics for the Extreme-Value Birnbaum-Saunders (EVBS) regression model of Ferreira, Gomes and Leiva (2012): joint maximum likelihood estimation, conformal normal curvature diagnostics under case-weight, response and explanatory-variable perturbation, randomized quantile residuals with simulation envelope, the density, distribution and quantile functions, the finite upper endpoint, return levels and expected shortfall, moving-block bootstrap standard errors, a prospective index of endpoint identifiability, the same diagnostics for generalized extreme-value regression, and a gamlss family allowing the tail-shape parameter to depend on covariates. The methods are described in Lima, Ospina, Barros and Macedo (2025) &lt;doi:10.48550/arXiv.2507.22967&gt; and are applied to monthly maximum wind gusts from Itajai, Brazil.">
+<meta property="og:description" content="Local influence diagnostics for the Extreme-Value Birnbaum-Saunders (EVBS) regression model of Ferreira, Gomes and Leiva (2012): joint maximum likelihood estimation, conformal normal curvature diagnostics under case-weight, response and explanatory-variable perturbation, randomized quantile residuals with simulation envelope, the density, distribution and quantile functions, the finite upper endpoint, return levels and expected shortfall, moving-block bootstrap standard errors, a prospective index of endpoint identifiability, the same diagnostics for generalized extreme-value regression, and a gamlss family allowing the tail-shape parameter to depend on covariates. The methods are described in Lima, Ospina, Barros and Macedo (2025) &lt;doi:10.48550/arXiv.2507.22967&gt; and are applied to monthly maximum wind gusts from Itajai, Brazil.">
 <meta property="og:image" content="https://raydonal.github.io/evbsreg/logo.png">
 </head>
 <body>
@@ -28,7 +28,7 @@
 
     <a class="navbar-brand me-2" href="index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,22 +61,22 @@
 <!-- badges: start -->
 
 <p><strong>Local influence diagnostics for the Extreme-Value Birnbaum–Saunders (EVBS) regression model.</strong></p>
-<p>This package implements the methodology of:</p>
+<p>It provides joint maximum likelihood estimation, conformal normal curvature (CNC) diagnostics under three perturbation schemes, randomized quantile residuals with simulation envelope, the EVBS distribution family (density, distribution, quantile), the finite upper endpoint, return levels and expected shortfall, moving-block bootstrap standard errors, and the same local influence diagnostics for the generalized extreme-value (GEV) regression model, used as a benchmark. <code><a href="reference/evbs_monitor.html">evbs_monitor()</a></code> combines the curvature diagnostic with the finite upper endpoint into a prospective index of endpoint identifiability with a natural control limit. See <code>NEWS.md</code> for the changelog and the vignette for a reproducible walk-through.</p>
+<p>The methodology is described in</p>
 <blockquote>
-<p>Ospina, R., Lima, J. I. C., Barros, M., and Macêdo, A. M. S. (2026). <em>Local influence diagnostics for the extreme-value Birnbaum–Saunders regression model: methodology, validation, and application to anomalous wind gusts.</em> Submitted.</p>
+<p>Ospina, R., Lima, J. I. C., Barros, M., and Macêdo, A. M. S. (2026). <em>Local influence diagnostics for extreme-value Birnbaum–Saunders regression, with an application to wind-gust extremes.</em> Submitted. Preliminary version: <a href="https://arxiv.org/abs/2507.22967" class="external-link">arXiv:2507.22967</a>.</p>
 </blockquote>
-<p>It provides joint maximum likelihood estimation, conformal normal curvature (CNC) diagnostics under three perturbation schemes, randomized quantile residuals with simulation envelope, Monte Carlo utilities, and publication-quality density and diagnostic plots. Since 1.1.0 it also provides the full EVBS distribution family (density, distribution, quantile), the finite upper endpoint and return levels, moving-block bootstrap standard errors, and the corresponding local influence diagnostics for the generalized extreme-value (GEV) regression model, used throughout as a benchmark. Since 1.2.0 it provides <code><a href="reference/evbs_monitor.html">evbs_monitor()</a></code>, a prospective control chart that combines the curvature diagnostic with the finite upper endpoint into an index of endpoint identifiability with a natural control limit. See <code>NEWS.md</code> for the full changelog.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>From a local source tarball:</p>
+<p>From CRAN:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"evbsreg_1.2.0.tar.gz"</span>, repos <span class="op">=</span> <span class="cn">NULL</span>, type <span class="op">=</span> <span class="st">"source"</span><span class="op">)</span></span></code></pre></div>
-<p>Or from GitHub:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"evbsreg"</span><span class="op">)</span></span></code></pre></div>
+<p>Or the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># install.packages("remotes")</span></span>
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"Raydonal/evbsreg"</span><span class="op">)</span></span></code></pre></div>
-<p>Dependencies: <code>SpatialExtremes</code> (GEV random number generation) and <code>ggplot2</code> (density plots). <code>gamlss</code> is needed only to fit the optional <code><a href="reference/logEVBS.html">logEVBS()</a></code> family with the <code>gamlss</code> package itself.</p>
+<p>Dependencies: <code>ggplot2</code> (density plots) besides base R. <code>gamlss</code> is needed only to fit the optional <code><a href="reference/logEVBS.html">logEVBS()</a></code> family with the <code>gamlss</code> package itself.</p>
 </div>
 <div class="section level2">
 <h2 id="quick-start">Quick start<a class="anchor" aria-label="anchor" href="#quick-start"></a>

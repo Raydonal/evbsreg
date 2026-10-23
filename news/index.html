@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,15 @@
       <small>Source: <a href="https://github.com/Raydonal/evbsreg/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.2" id="evbsreg-122">evbsreg 1.2.2<a class="anchor" aria-label="anchor" href="#evbsreg-122"></a></h2>
+<ul><li>Removed the dependency on ‘SpatialExtremes’, which was archived on CRAN on 2026-10-21 (and with it evbsreg). The package used only <code>SpatialExtremes::rgev()</code>, inside <code><a href="../reference/revbs.html">revbs()</a></code>; it is replaced by an internal generator built on the same inversion of an Exp(1) draw, so <code><a href="../reference/revbs.html">revbs()</a></code> and <code><a href="../reference/evbsreg.fit.mc.html">evbsreg.fit.mc()</a></code> return identical values for a given seed.</li>
+<li>Examples and vignette are fully reproducible: the only random steps (<code><a href="../reference/envelope_qq.html">envelope_qq()</a></code> envelope, <code><a href="../reference/evbs_block_boot.html">evbs_block_boot()</a></code> resampling) now run after <code><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed()</a></code>, and numbers quoted in the vignette text are computed inline.</li>
+<li>The vignette now also covers the upper endpoint, return levels and expected shortfall, block bootstrap standard errors, <code><a href="../reference/evbs_monitor.html">evbs_monitor()</a></code>, and the comparison with GEV regression using the common statistic <code>Bbar</code>.</li>
+<li>
+<code>DESCRIPTION</code>, <code>README.md</code> and <code>inst/CITATION</code> updated to the current title of the accompanying paper, with the arXiv preprint; the version history was removed from the <code>Description</code> field.</li>
+<li>pkgdown site: favicons regenerated in the format pkgdown &gt;= 2.1 links to (<code>favicon.svg</code>, <code>favicon-96x96.png</code>, <code>site.webmanifest</code>), which were missing.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.1" id="evbsreg-121">evbsreg 1.2.1<a class="anchor" aria-label="anchor" href="#evbsreg-121"></a></h2>
 <div class="section level3">

@@ -39,8 +39,9 @@ estimates.
 ``` r
 # \donttest{
 data(itajai)
+set.seed(2023)  # the resampled blocks are random
 evbs_block_boot(cbind(1, itajai$pressure), itajai$wind, L = 4, B = 100)$se
 #>       beta0       beta1       alpha        gama 
-#> 3.394828676 0.003359365 0.011982107 0.089169799 
+#> 3.571699159 0.003532819 0.012057007 0.083550062 
 # }
 ```

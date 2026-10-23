@@ -36,8 +36,10 @@ A numeric vector of `n` EVBS variates. Returns `NA` if `n` is `NA`.
 
 If \\Z \sim \mathrm{GEV}(0, 1, \gamma)\\, then \\T = \beta\\1 + \alpha^2
 Z^2/2 + \alpha Z \sqrt{1 + \alpha^2 Z^2/4}\\\\ follows the EVBS
-distribution. GEV variates are drawn via `rgev` from the SpatialExtremes
-package.
+distribution. GEV variates are drawn by inversion, \\Z = (E^{-\gamma} -
+1)/\gamma\\ (or \\Z = -\log E\\ when \\\gamma = 0\\) with \\E \sim\\
+Exp(1); for a given seed this reproduces exactly the variates of earlier
+versions, which used `SpatialExtremes::rgev`.
 
 ## References
 

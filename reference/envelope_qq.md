@@ -46,7 +46,10 @@ University Press.
 ``` r
 data(itajai)
 X <- cbind(1, itajai$pressure)
+# \donttest{
+set.seed(2023)  # the envelope bands are simulated
 envelope_qq(X, itajai$wind, nrep = 100)
 
 #> Warning: "m" is not a graphical parameter
+# }
 ```

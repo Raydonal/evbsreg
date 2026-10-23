@@ -1,5 +1,35 @@
 # Changelog
 
+## evbsreg 1.2.2
+
+- Removed the dependency on ‘SpatialExtremes’, which was archived on
+  CRAN on 2026-10-21 (and with it evbsreg). The package used only
+  `SpatialExtremes::rgev()`, inside
+  [`revbs()`](https://raydonal.github.io/evbsreg/reference/revbs.md); it
+  is replaced by an internal generator built on the same inversion of an
+  Exp(1) draw, so
+  [`revbs()`](https://raydonal.github.io/evbsreg/reference/revbs.md) and
+  [`evbsreg.fit.mc()`](https://raydonal.github.io/evbsreg/reference/evbsreg.fit.mc.md)
+  return identical values for a given seed.
+- Examples and vignette are fully reproducible: the only random steps
+  ([`envelope_qq()`](https://raydonal.github.io/evbsreg/reference/envelope_qq.md)
+  envelope,
+  [`evbs_block_boot()`](https://raydonal.github.io/evbsreg/reference/evbs_block_boot.md)
+  resampling) now run after
+  [`set.seed()`](https://rdrr.io/r/base/Random.html), and numbers quoted
+  in the vignette text are computed inline.
+- The vignette now also covers the upper endpoint, return levels and
+  expected shortfall, block bootstrap standard errors,
+  [`evbs_monitor()`](https://raydonal.github.io/evbsreg/reference/evbs_monitor.md),
+  and the comparison with GEV regression using the common statistic
+  `Bbar`.
+- `DESCRIPTION`, `README.md` and `inst/CITATION` updated to the current
+  title of the accompanying paper, with the arXiv preprint; the version
+  history was removed from the `Description` field.
+- pkgdown site: favicons regenerated in the format pkgdown \>= 2.1 links
+  to (`favicon.svg`, `favicon-96x96.png`, `site.webmanifest`), which
+  were missing.
+
 ## evbsreg 1.2.1
 
 ### Bug fixes and documentation

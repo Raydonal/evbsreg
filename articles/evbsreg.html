@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -193,7 +193,6 @@ it.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/envelope_qq.html">envelope_qq</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span>, nrep <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <p><img src="evbsreg_files/figure-html/envelope-1.png" class="r-plt" alt="" width="576"></p>
-<pre><code><span><span class="co">#&gt; Warning in par(oldpar): "m" is not a graphical parameter</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="endpoint-return-levels-and-expected-shortfall">Endpoint, return levels and expected shortfall<a class="anchor" aria-label="anchor" href="#endpoint-return-levels-and-expected-shortfall"></a>
@@ -204,7 +203,7 @@ the fitted EVBS distribution has a finite upper endpoint, which depends
 on the covariate through the linear predictor
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>η</mi><mo>=</mo><msup><mi>x</mi><mi>⊤</mi></msup><mi>β</mi></mrow><annotation encoding="application/x-tex">\eta = x^\top\beta</annotation></semantics></math>.
 At the covariate value of observation 82:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eta82</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">X</span><span class="op">[</span><span class="fl">82</span>, <span class="op">]</span> <span class="op">*</span> <span class="va">fit</span><span class="op">$</span><span class="va">betahat</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>endpoint <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/unname.html" class="external-link">unname</a></span><span class="op">(</span><span class="fu"><a href="../reference/evbs_endpoint.html">evbs_endpoint</a></span><span class="op">(</span><span class="va">eta82</span>, <span class="va">fit</span><span class="op">$</span><span class="va">alphahat</span>, <span class="va">fit</span><span class="op">$</span><span class="va">gamahat</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>  observed <span class="op">=</span> <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span><span class="op">[</span><span class="fl">82</span><span class="op">]</span><span class="op">)</span></span>
@@ -215,7 +214,7 @@ At the covariate value of observation 82:</p>
 months, so <code>12 * 50</code> is the level exceeded on average once
 every 50 years (at the given covariate value, here the mean
 pressure):</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/evbs_return_level.html">evbs_return_level</a></span><span class="op">(</span><span class="va">fit</span>, x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">itajai</span><span class="op">$</span><span class="va">pressure</span><span class="op">)</span><span class="op">)</span>,</span>
 <span>                  period <span class="op">=</span> <span class="fl">12</span> <span class="op">*</span> <span class="fl">50</span>, es <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt;       return_level expected_shortfall </span></span>
@@ -235,7 +234,7 @@ come from <code><a href="../reference/qevbs.html">qevbs()</a></code>.</p>
 </h2>
 <p>If the residuals show serial dependence, moving-block bootstrap
 standard errors are a safer guide than the information-based ones:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/Random.html" class="external-link">set.seed</a></span><span class="op">(</span><span class="fl">2023</span><span class="op">)</span></span>
 <span><span class="va">bb</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/evbs_block_boot.html">evbs_block_boot</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span>, L <span class="op">=</span> <span class="fl">4</span>, B <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">bb</span><span class="op">$</span><span class="va">se</span>, <span class="fl">4</span><span class="op">)</span></span>
@@ -251,7 +250,7 @@ compares it with the fitted upper endpoint. Values of the index
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>F</mi><mi>t</mi></msub><annotation encoding="application/x-tex">F_t</annotation></semantics></math>
 below one mean that the flagged observation is close to or beyond what
 the model can accommodate.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ct</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/evbs_monitor.html">evbs_monitor</a></span><span class="op">(</span><span class="va">X</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span>, burn <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
 <span><span class="va">ct</span><span class="op">[</span><span class="va">ct</span><span class="op">$</span><span class="cn">F</span> <span class="op">&lt;</span> <span class="fl">1</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"t"</span>, <span class="st">"flagged"</span>, <span class="st">"gama"</span>, <span class="st">"endpoint"</span>, <span class="st">"F"</span><span class="op">)</span><span class="op">]</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">4</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt;     t flagged       gama endpoint         F</span></span>
@@ -276,7 +275,7 @@ observation flagged by the curvature.</p>
 <p>The same diagnostics are available for a GEV regression fitted to the
 response scale. Centre the covariates first: the GEV likelihood is
 poorly conditioned otherwise.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Xc</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">pressure</span> <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">itajai</span><span class="op">$</span><span class="va">pressure</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">gfit</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/gevreg.fit.html">gevreg.fit</a></span><span class="op">(</span><span class="va">Xc</span>, <span class="va">itajai</span><span class="op">$</span><span class="va">wind</span><span class="op">)</span></span>
 <span><span class="va">gfit</span><span class="op">$</span><span class="va">convergence</span></span>
@@ -285,7 +284,7 @@ poorly conditioned otherwise.</p>
 <p>To compare influence rankings, use the same statistic for both
 families: <code>colMeans(diag$Bj)</code> for the EVBS fit and
 <code>Bbar</code> for the GEV fit.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">Bbar_evbs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/colSums.html" class="external-link">colMeans</a></span><span class="op">(</span><span class="va">diag</span><span class="op">$</span><span class="va">Bj</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/order.html" class="external-link">order</a></span><span class="op">(</span><span class="va">Bbar_evbs</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>, <span class="fl">3</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1]  82 108   6</span></span>
@@ -301,7 +300,7 @@ families: <code>colMeans(diag$Bj)</code> for the EVBS fit and
 </h2>
 <p>The package also provides the density-plotting functions used for the
 density figures of the paper.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_evbs_alpha.html">plot_evbs_alpha</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="evbsreg_files/figure-html/densities-1.png" class="r-plt" alt="" width="672"></p>
 </div>
@@ -312,7 +311,7 @@ density figures of the paper.</p>
 application and the Monte Carlo study. They write only to
 <code><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir()</a></code>. After installation they are available via
 <code><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file()</a></code>:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Density figures</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/source.html" class="external-link">source</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"scripts/script_01_density_figures.R"</span>, package <span class="op">=</span> <span class="st">"evbsreg"</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>

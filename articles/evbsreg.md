@@ -151,8 +151,6 @@ envelope_qq(X, itajai$wind, nrep = 100)
 
 ![](evbsreg_files/figure-html/envelope-1.png)
 
-    #> Warning in par(oldpar): "m" is not a graphical parameter
-
 ## Endpoint, return levels and expected shortfall
 
 When $`\hat\gamma < 0`$ the fitted EVBS distribution has a finite upper

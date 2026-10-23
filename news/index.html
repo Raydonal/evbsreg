@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">evbsreg</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.2.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,6 +32,13 @@
       <small>Source: <a href="https://github.com/Raydonal/evbsreg/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="1.2.3" id="evbsreg-123">evbsreg 1.2.3<a class="anchor" aria-label="anchor" href="#evbsreg-123"></a></h2>
+<ul><li>
+<code><a href="../reference/envelope_qq.html">envelope_qq()</a></code> did not restore the graphical parameter <code>pty</code> on exit: it saved <code>par("pty")</code> without its name, so <code>par(oldpar)</code> restored nothing and warned ‘“m” is not a graphical parameter’. It now uses <code>oldpar &lt;- par(pty = "s"); on.exit(par(oldpar))</code>. A test checks that <code>pty</code> is restored and that no warning is emitted.</li>
+<li>
+<code><a href="../reference/envelope_qq.html">envelope_qq()</a></code> failed for <code>nrep</code> below 40 (an order-statistic index of 0). The indices are now kept valid; the bands are unchanged for <code>nrep &gt;= 40</code>.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="1.2.2" id="evbsreg-122">evbsreg 1.2.2<a class="anchor" aria-label="anchor" href="#evbsreg-122"></a></h2>
 <ul><li>Removed the dependency on ‘SpatialExtremes’, which was archived on CRAN on 2026-10-21 (and with it evbsreg). The package used only <code>SpatialExtremes::rgev()</code>, inside <code><a href="../reference/revbs.html">revbs()</a></code>; it is replaced by an internal generator built on the same inversion of an Exp(1) draw, so <code><a href="../reference/revbs.html">revbs()</a></code> and <code><a href="../reference/evbsreg.fit.mc.html">evbsreg.fit.mc()</a></code> return identical values for a given seed.</li>

@@ -21,6 +21,9 @@ was removed or changed. See NEWS.md.
 
 * "New submission / Package was archived on CRAN": expected, this is the
   resubmission addressing the reason for archival described above.
+  The same note lists "possibly misspelled words" in DESCRIPTION (Barros,
+  Birnbaum, EVBS, Ferreira, Gomes, Itajai, Leiva, Macedo, Ospina): all are
+  author names, the model acronym, or a place name, and are spelled correctly.
 * The other note concerns HTML manual validation and is a limitation of the
   local check machine only (no `tidy` binary installed); it is not expected
   on CRAN's own check systems, which carry `tidy`.
@@ -37,9 +40,13 @@ was removed or changed. See NEWS.md.
 * local Ubuntu 24.04, R 4.6.1: `R CMD build` + `R CMD check --as-cran`
   (see above). Full `testthat` suite (41 expectations across 5 files) passes.
 
-Not yet run for this version, recommended before submitting: win-builder
-(devel and release) and the R-hub checks (`.github/workflows/rhub.yaml`,
-manual `workflow_dispatch`).
+* win-builder R-devel (2026-10-22 r90748 ucrt): 1 note (the incoming
+  feasibility note above).
+* mac-builder, r-release-macosx-arm64, R 4.6.1: OK.
+* GitHub Actions, all OK: macos-latest (release), windows-latest (release),
+  ubuntu-latest (devel, release, oldrel-1).
+* R-hub, all OK: linux (R-devel), windows (R-devel), macos (R-devel),
+  macos-arm64 (R-devel), ubuntu-next, ubuntu-release.
 
 ## Downstream dependencies
 

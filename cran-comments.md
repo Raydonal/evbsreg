@@ -1,3 +1,14 @@
+## Version 1.2.3 replaces 1.2.2 in the incoming queue
+
+1.2.2 was submitted on 2026-10-23 and is waiting in newbies/. After submitting
+we found that `envelope_qq()` did not actually restore `par("pty")` on exit,
+contrary to what we stated for the previous CRAN review: it saved the value
+without its name, so `par(oldpar)` restored nothing and raised a warning. 1.2.3
+fixes this (`oldpar <- par(pty = "s"); on.exit(par(oldpar))`, with a test) and
+an indexing error in the same function for small `nrep`. Nothing else changed
+relative to 1.2.2; please consider 1.2.3 in its place. We apologise for the
+extra submission.
+
 ## Resubmission after archival
 
 evbsreg was archived on 2026-10-21 because it required 'SpatialExtremes',
@@ -38,7 +49,7 @@ was removed or changed. See NEWS.md.
 ## Test environments
 
 * local Ubuntu 24.04, R 4.6.1: `R CMD build` + `R CMD check --as-cran`
-  (see above). Full `testthat` suite (41 expectations across 5 files) passes.
+  (see above). Full `testthat` suite (45 expectations across 5 files) passes.
 
 * win-builder R-devel (2026-10-22 r90748 ucrt): 1 note (the incoming
   feasibility note above).

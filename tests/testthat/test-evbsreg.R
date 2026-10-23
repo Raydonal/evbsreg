@@ -49,3 +49,15 @@ test_that("revbs draws match the former SpatialExtremes::rgev construction", {
     expect_identical(x, 2 * (1 + 0.25 * z^2 / 2 + 0.5 * z * sqrt(1 + 0.25 * z^2 / 4)))
   }
 })
+
+test_that("envelope_qq restores par('pty') without warnings and accepts small nrep", {
+  data(itajai)
+  X <- cbind(1, itajai$pressure)
+  grDevices::pdf(NULL)
+  on.exit(grDevices::dev.off())
+  graphics::par(pty = "m")
+  expect_silent(env <- envelope_qq(X, itajai$wind, nrep = 100))
+  expect_identical(graphics::par("pty"), "m")
+  expect_true(all(env$e1 <= env$e2))
+  expect_silent(envelope_qq(X, itajai$wind, nrep = 10))
+})

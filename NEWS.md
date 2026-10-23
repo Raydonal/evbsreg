@@ -1,3 +1,13 @@
+# evbsreg 1.2.3
+
+* `envelope_qq()` did not restore the graphical parameter `pty` on exit: it
+  saved `par("pty")` without its name, so `par(oldpar)` restored nothing and
+  warned '"m" is not a graphical parameter'. It now uses
+  `oldpar <- par(pty = "s"); on.exit(par(oldpar))`. A test checks that `pty`
+  is restored and that no warning is emitted.
+* `envelope_qq()` failed for `nrep` below 40 (an order-statistic index of 0).
+  The indices are now kept valid; the bands are unchanged for `nrep >= 40`.
+
 # evbsreg 1.2.2
 
 * Removed the dependency on 'SpatialExtremes', which was archived on CRAN on

@@ -2,7 +2,7 @@ Package: evbsreg
 Type: Package
 Title: Local Influence Diagnostics for the Extreme-Value Birnbaum-Saunders
         Regression Model
-Version: 1.2.2
+Version: 1.2.3
 Date: 2026-10-23
 Authors@R:
     person("Raydonal", "Ospina",

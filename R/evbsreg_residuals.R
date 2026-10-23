@@ -118,23 +118,24 @@ envelope_qq <- function(X, t, nrep = 100) {
     e[, i] <- sort(r1)
   }
 
+  # order statistics averaged for the 2.5% and 97.5% bands; pmax() keeps the
+  # indices valid for small nrep (they are unchanged for nrep >= 40)
+  k_lo <- round(0.025 * nrep)
+  k_hi <- round(0.975 * nrep)
+  i_lo <- pmax(1, c(k_lo - 1, k_lo) + (k_lo <= 1))
+  i_hi <- pmax(1, c(k_hi - 1, k_hi))
   e1 <- numeric(n)
   e2 <- numeric(n)
   for (i in seq_len(n)) {
     eo <- sort(e[i, ])
-    e1[i] <- (eo[round(0.025 * nrep) - 1 +
-                  ifelse(round(0.025 * nrep) <= 1, 1, 0)] +
-                eo[round(0.025 * nrep) +
-                     ifelse(round(0.025 * nrep) <= 1, 1, 0)]) / 2
-    e2[i] <- (eo[round(0.975 * nrep) - 1] +
-                eo[round(0.975 * nrep)]) / 2
+    e1[i] <- (eo[i_lo[1]] + eo[i_lo[2]]) / 2
+    e2[i] <- (eo[i_hi[1]] + eo[i_hi[2]]) / 2
   }
   med   <- apply(e, 1, mean)
   faixa <- range(r, e1, e2, med)
 
-  oldpar <- par("pty")
+  oldpar <- par(pty = "s")
   on.exit(par(oldpar))
-  par(pty = "s")
   qqnorm(r, main = "", ylim = faixa,
          ylab = "Randomized quantile residuals",
          xlab = "Quantiles of N(0,1)",

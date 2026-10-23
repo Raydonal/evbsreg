@@ -51,6 +51,7 @@ that signals almost everywhere; it is provided for comparison only.
 \donttest{
 data(itajai)
 ct <- evbs_monitor(cbind(1, itajai$pressure), itajai$wind, burn = 40)
-plot(ct$t, ct$F, type = "l"); abline(h = 1, lty = 2)
+ct[ct$F < 1, ]  # instants with an alarm
+plot(ct)
 }
 }

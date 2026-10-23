@@ -1,3 +1,22 @@
+# evbsreg 1.2.2
+
+* Removed the dependency on 'SpatialExtremes', which was archived on CRAN on
+  2026-10-21 (and with it evbsreg). The package used only
+  `SpatialExtremes::rgev()`, inside `revbs()`; it is replaced by an internal
+  generator built on the same inversion of an Exp(1) draw, so `revbs()` and
+  `evbsreg.fit.mc()` return identical values for a given seed.
+* Examples and vignette are fully reproducible: the only random steps
+  (`envelope_qq()` envelope, `evbs_block_boot()` resampling) now run after
+  `set.seed()`, and numbers quoted in the vignette text are computed inline.
+* The vignette now also covers the upper endpoint, return levels and expected
+  shortfall, block bootstrap standard errors, `evbs_monitor()`, and the
+  comparison with GEV regression using the common statistic `Bbar`.
+* `DESCRIPTION`, `README.md` and `inst/CITATION` updated to the current title
+  of the accompanying paper, with the arXiv preprint; the version history was
+  removed from the `Description` field.
+* pkgdown site: favicons regenerated in the format pkgdown >= 2.1 links to
+  (`favicon.svg`, `favicon-96x96.png`, `site.webmanifest`), which were missing.
+
 # evbsreg 1.2.1
 
 ## Bug fixes and documentation

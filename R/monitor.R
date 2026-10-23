@@ -38,7 +38,8 @@
 #' \donttest{
 #' data(itajai)
 #' ct <- evbs_monitor(cbind(1, itajai$pressure), itajai$wind, burn = 40)
-#' plot(ct$t, ct$F, type = "l"); abline(h = 1, lty = 2)
+#' ct[ct$F < 1, ]  # instants with an alarm
+#' plot(ct)
 #' }
 #' @export
 evbs_monitor <- function(X, y, burn = 40, use = c("curvature", "max")) {

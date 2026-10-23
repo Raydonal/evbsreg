@@ -38,3 +38,14 @@ test_that("revbs returns the requested number of positive variates", {
   expect_length(x, 50)
   expect_true(all(x > 0))
 })
+
+test_that("revbs draws match the former SpatialExtremes::rgev construction", {
+  for (g in c(-0.2, 0, 0.2)) {
+    set.seed(1)
+    x <- revbs(20, alpha = 0.5, beta = 2, gama = g)
+    set.seed(1)
+    e <- rexp(20)
+    z <- if (g == 0) -log(e) else (e^(-g) - 1) / g
+    expect_identical(x, 2 * (1 + 0.25 * z^2 / 2 + 0.5 * z * sqrt(1 + 0.25 * z^2 / 4)))
+  }
+})

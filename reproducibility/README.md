@@ -40,6 +40,7 @@ each block is labelled with the table or quantity it reproduces.
 | Fit, tail index, influence ranking; Tables 1–4 and 6, estimates and tests of Table 5; endpoint; serial dependence, seasonality test and block bootstrap; Fremantle fit and tests; monitoring index | `reproduzir_tudo.R` | console |
 | Table 7 (EVBS vs GEV vs EGPD, Vuong tests); check of the generalized Pareto score of Section S5 | `scripts/27_comparacao_familias.R` | console |
 | Every formula of Section 4.2 and of Sections S1–S5, Propositions 1, 2 and S5 | `scripts/29_verifica_formulas.R` | console (29 checks) |
+| Table S8, last row: refit of the ozone example of Leiva et al. (2016) | `scripts/32_leiva2016_ozonio.R` | console |
 | Figures 1, 2, 4, 6, 7 | `scripts/gerar_figuras.R` | `fig_originais/` |
 | Figure 3 | `scripts/22_serie.R` | `fig/serie_completa.png` |
 | Figures 5, 8 | `scripts/28_fitted_quantiles.R` | `fig_originais/plot6.png`, `fig/frem_serie.png` |
